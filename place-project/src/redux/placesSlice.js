@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const cardItems = [
+const initialState = {
+    cards: [
     {
         id: 1,
         name: "Place 1",
@@ -65,15 +66,28 @@ const cardItems = [
         description: "Popular Places",
         visited: false,
     },
-];
+]};
 const placesSlice = createSlice({
     name: "cards",
-    initialState: cardItems,
+    initialState,
     reducers: {
         markAsVisited: (state, action) => {
-            console.log(state);
+            const place = state.cards.find(
+                (place) => place.id === action.payload
+            );
+            if(place) {
+                place.visited =true;
+            }
         },
+        unMarkAsVisited: (state,action) => {
+            const place = state.cards.find(
+                (place) => place.id === action.payload
+            );
+            if (place) {
+                place.visited = false;
+            }
+        }
     },
 });
-export const { markAsVisited} = placesSlice.actions;
+export const { markAsVisited, unMarkAsVisited} = placesSlice.actions;
 export default placesSlice.reducer;

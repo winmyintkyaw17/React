@@ -11,7 +11,7 @@ import PlaceList from './pages/PlaceList'
 import PlaceDetail from './pages/PlaceDetail'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>

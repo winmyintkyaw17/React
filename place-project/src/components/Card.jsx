@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-function Card({ cardItem,isDetail }) {
+function Card({ cardItem,isDetail,toggleVisitedStatus }) {
   const { id, name, image, description, visited } = cardItem;
   const status = visited ? "Not Visited" : "Visited";
+  
   return (
     <div className="bg-gray-100 p-2 rounded-md text-center max-w-xs mx-auto">
       <div className="relative overflow-hidden aspect-video">
@@ -29,6 +30,7 @@ function Card({ cardItem,isDetail }) {
   }`}>
         <Button
           text={"Save as Visited"}
+          clickEvent = {() => toggleVisitedStatus(id,visited)}
           startIcon={<FontAwesomeIcon icon={faLocationDot} />}
         />
         
